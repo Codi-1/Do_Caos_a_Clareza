@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Caos à Clareza — Kit de Psicologia Aplicada | Clóvis Neto</title>
+  <meta name="description" content="5 produtos de psicologia aplicada para identificar padrões, regular emoções, construir autoestima e estabelecer limites saudáveis. Por R$67." />
+
+  <!-- ═══════════════════════════════════════════
+       META PIXEL
+  ═══════════════════════════════════════════ -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '322546353481330');
+    fbq('track', 'PageView');
+
+    // Envia PageView também via CAPI (deduplicado por event_id)
+    const PV_ID = 'pv_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+    sendCAPI('PageView', {}, PV_ID);
+
+    function generateEventId() {
+      return 'evt_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+    }
+
+    function sendCAPI(eventName, customData, eventId) {
+      const pixelId   = '322546353481330';
+      const capiToken = 'EAAKOpFWmHaEBQ3GYC5rUXErDJ1B5sZAIEhNXN3NXVOd14tZBnFZB3HBubrXzYlXnzjIQV7DltVSAlgaQoVnJOZAQubvoZCP8ePFkOFZCx7SWundSIV8XlWcwWqdkAgKnZCmDWIWxYqmZB2twxmF0ZCRXTl5tzDMa5wsZCRqk3xEE5pZCdCHlc0ZBZBMwIYV5j6Brrxsk6oQZDZD';
+      const payload   = {
+        data: [{
+          event_name:       eventName,
+          event_time:       Math.floor(Date.now() / 1000),
+          event_id:         eventId || generateEventId(),
+          event_source_url: window.location.href,
+          action_source:    'website',
+          user_data: {
+            client_user_agent: navigator.userAgent,
+            fbp: getCookie('_fbp') || '',
+            fbc: getCookie('_fbc') || '',
+          },
+          custom_data: customData
+        }]
+      };
+      fetch(`https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${capiToken}`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      }).catch(() => {});
+    }
+
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : '';
+    }
+
+    // Dispara InitiateCheckout ao clicar em qualquer botão de CTA
+    function trackCheckout() {
+      const evtId = generateEventId();
+      fbq('track', 'InitiateCheckout', { value: 67.00, currency: 'BRL', num_items: 5 }, { eventID: evtId });
+      sendCAPI('InitiateCheckout', { value: 67.00, currency: 'BRL', num_items: 5 }, evtId);
+    }
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=322546353481330&ev=PageView&noscript=1" /></noscript>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       TOKENS — paleta dos PDFs do kit
+    ══════════════════════════════════════════ */
+    :root {
+      --cream:        #F5EFE8;
+      --cream-dark:   #EDE4D8;
+      --terra:        #A85840;
+      --terra-mid:    #C87858;
+      --terra-light:  #EDD5C4;
+      --terra-pale:   #F8EDE6;
+      --sage:         #68907E;
+      --sage-light:   #C4D8CE;
+      --sage-pale:    #E8F2EE;
+      --rose:         #A87888;
+      --rose-light:   #E8D0D8;
+      --rose-pale:    #F8F0F4;
+      --dark:         #241410;
+      --mid:          #6A4030;
+      --gray:         #9E8878;
+      --gold:         #C8A060;
+      --gold-light:   #F0DEB8;
+      --gold-pale:    #FBF5E8;
+      --white:        #FDFAF7;
+      --slate:        #5A7080;
+      --slate-light:  #C0CED6;
+      --slate-pale:   #EBF0F4;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --r-sm:   8px;
+      --r-md:  14px;
+      --r-lg:  22px;
+      --r-xl:  32px;
+
+      --shadow-sm: 0 2px 8px rgba(36,20,16,.08);
+      --shadow-md: 0 6px 24px rgba(36,20,16,.12);
+      --shadow-lg: 0 16px 48px rgba(36,20,16,.18);
+    }
+
+    /* ══════════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════════
+       STICKY HEADER
+    ══════════════════════════════════════════ */
+    .sticky-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--dark);
+      padding: 10px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+      transform: translateY(-100%);
+      transition: transform .35s ease;
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar__text {
+      font-family: var(--font-display);
+      font-size: clamp(13px, 2vw, 16px);
+      color: var(--gold-light);
+      font-style: italic;
+    }
+    .sticky-bar__price {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .sticky-bar__cta {
+      background: var(--terra);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .sticky-bar__cta:hover { background: var(--terra-mid); }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      background: var(--dark);
+      padding: clamp(72px, 10vw, 100px) 0 clamp(48px, 8vw, 80px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 110% 20%, rgba(168,88,64,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at -10% 80%, rgba(104,144,126,.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 60px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,160,96,.15);
+      border: 1px solid rgba(200,160,96,.35);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+    }
+    .hero__badge span { color: var(--gold); }
+    .hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--terra-mid);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .hero__headline {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero__headline em {
+      font-style: italic;
+      color: var(--terra-mid);
+    }
+    .hero__sub {
+      font-size: clamp(14px, 1.8vw, 17px);
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero__price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .hero__price-old {
+      font-size: 15px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .hero__price-new {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero__price-note {
+      font-size: 12px;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--terra);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.8vw, 17px);
+      font-weight: 600;
+      padding: clamp(14px, 2vw, 18px) clamp(28px, 4vw, 48px);
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(168,88,64,.35);
+      transition: transform .2s, box-shadow .2s, background .2s;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    .btn-cta:hover {
+      background: var(--terra-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(168,88,64,.45);
+    }
+    .btn-cta:active { transform: translateY(0); }
+    .btn-cta__icon { font-size: 1.2em; }
+    .hero__trust {
+      display: flex;
+      gap: 20px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .hero__trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .hero__trust-item .icon { color: var(--sage); font-size: 14px; }
+
+    /* Kit mockup visual */
+    .hero__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+    }
+    .mockup-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    /* Wrapper com hover no pai para não conflitar com keyframe */
+    .mockup-hover {
+      border-radius: 14px;
+      transition: transform 0.35s ease;
+    }
+    .mockup-hover:hover {
+      transform: scale(1.04) rotateZ(0.5deg);
+    }
+
+    /* Imagem flutuante — transform isolado no filho para não colidir com hover do pai */
+    .floating-image {
+      position: relative;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      will-change: transform;
+    }
+    .floating-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+    }
+    /* Overlay dourado */
+    .floating-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(circle at 50% 50%, rgba(200,160,96,.12), transparent 70%);
+      pointer-events: none;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0px) scale(1); }
+      50%  { transform: translateY(-12px) scale(1.02); }
+      100% { transform: translateY(0px) scale(1); }
+    }
+    .mockup-badge {
+      position: absolute;
+      bottom: -12px; right: -12px;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 11px;
+      padding: 10px 16px;
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-md);
+      line-height: 1.4;
+      text-align: center;
+      z-index: 2;
+    }
+
+    /* ══════════════════════════════════════════
+       SEÇÃO GENÉRICA
+    ══════════════════════════════════════════ */
+    .section {
+      padding: clamp(56px, 8vw, 96px) 0;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 5vw, 60px);
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: italic; color: var(--terra); }
+    .section-sub {
+      font-size: clamp(14px, 1.6vw, 17px);
+      color: var(--mid);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════════
+       IDENTIFICAÇÃO (dor)
+    ══════════════════════════════════════════ */
+    .pain { background: var(--terra-pale); }
+    .pain__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .pain__card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      padding: 22px 24px;
+      border-left: 4px solid var(--terra);
+      box-shadow: var(--shadow-sm);
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.65;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pain__card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .pain__card::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 40px;
+      color: var(--terra-light);
+      line-height: .8;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .pain__cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .pain__cta p {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-style: italic;
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+    .pain__cta small {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* ══════════════════════════════════════════
+       SOLUÇÃO
+    ══════════════════════════════════════════ */
+    .solution__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    .solution__text p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .solution__highlight {
+      background: var(--sage-pale);
+      border-left: 4px solid var(--sage);
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
+      padding: 18px 20px;
+      font-size: 14px;
+      color: var(--mid);
+      margin-top: 24px;
+    }
+    .solution__highlight strong { color: var(--sage); }
+    .solution__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .method-card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      padding: 18px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+    }
+    .method-card__icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .method-card__title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .method-card__desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════
+       PRODUTOS (value stack)
+    ══════════════════════════════════════════ */
+    .products { background: var(--white); }
+    .products__grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      padding: clamp(20px, 3vw, 32px);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border: 1.5px solid var(--cream-dark);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .product-card:hover {
+      border-color: var(--terra-light);
+      box-shadow: var(--shadow-md);
+    }
+    .product-card__num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .product-card__name {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .product-card__desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    .product-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background: var(--white);
+      color: var(--gray);
+      border: 1px solid var(--cream-dark);
+    }
+    .product-card__price {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .product-card__price-label {
+      font-size: 11px;
+      color: var(--gray);
+      margin-bottom: 2px;
+    }
+    .product-card__price-val {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 700;
+      color: var(--terra);
+    }
+
+    .products__total {
+      margin-top: 32px;
+      background: var(--dark);
+      border-radius: var(--r-xl);
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .products__total-text h3 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 3vw, 32px);
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .products__total-text p {
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .products__total-price {
+      text-align: center;
+    }
+    .products__total-old {
+      font-size: 15px;
+      color: var(--gray);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .products__total-new {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .products__total-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .products__total-cta .btn-cta { max-width: 320px; }
+    .products__total-safe {
+      font-size: 12px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ══════════════════════════════════════════
+       COMO FUNCIONA
+    ══════════════════════════════════════════ */
+    .how { background: var(--sage-pale); }
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+      position: relative;
+    }
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: calc(16.6% + 20px); right: calc(16.6% + 20px);
+      height: 2px;
+      background: var(--sage-light);
+      z-index: 0;
+    }
+    .how__step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .how__step-num {
+      width: 56px; height: 56px;
+      background: var(--sage);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 auto 20px;
+      box-shadow: 0 4px 16px rgba(104,144,126,.35);
+    }
+    .how__step h3 {
+      font-family: var(--font-display);
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .how__step p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════
+       AUTORIDADE
+    ══════════════════════════════════════════ */
+    .authority__inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+    .authority__photo-wrap {
+      position: relative;
+    }
+    .authority__photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--r-lg);
+      background: var(--terra-light);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .authority__photo-placeholder {
+      font-size: 48px;
+      opacity: .4;
+    }
+    .authority__photo-note {
+      font-size: 11px;
+      color: var(--terra);
+      text-align: center;
+      opacity: .7;
+      padding: 0 16px;
+    }
+    .authority__crp {
+      position: absolute;
+      bottom: -12px; right: -12px;
+      background: var(--terra);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: var(--r-sm);
+      box-shadow: var(--shadow-md);
+    }
+    .authority__name {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .authority__role {
+      font-size: 14px;
+      color: var(--terra);
+      font-weight: 500;
+      margin-bottom: 24px;
+      letter-spacing: .04em;
+    }
+    .authority__text p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .authority__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .authority__badge {
+      background: var(--terra-pale);
+      border: 1px solid var(--terra-light);
+      color: var(--terra);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+
+    /* ══════════════════════════════════════════
+       DEPOIMENTOS
+    ══════════════════════════════════════════ */
+    .testimonials { background: var(--terra-pale); }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .testimonial {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial__stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+    .testimonial__text {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.75;
+      flex: 1;
+      font-style: italic;
+    }
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial__avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--terra-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .testimonial__name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .testimonial__meta {
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .testimonial__placeholder {
+      font-size: 12px;
+      color: var(--terra-mid);
+      font-style: italic;
+      opacity: .7;
+      margin-top: 4px;
+    }
+
+    /* ══════════════════════════════════════════
+       GARANTIA
+    ══════════════════════════════════════════ */
+    .guarantee { background: var(--sage-pale); }
+    .guarantee__inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--white);
+      border-radius: var(--r-xl);
+      padding: clamp(28px, 4vw, 52px);
+      box-shadow: var(--shadow-md);
+    }
+    .guarantee__badge {
+      width: clamp(100px, 14vw, 140px);
+      height: clamp(100px, 14vw, 140px);
+      border-radius: 50%;
+      background: var(--sage);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-align: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(104,144,126,.35);
+    }
+    .guarantee__badge-days {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .guarantee__badge-label {
+      font-size: clamp(9px, 1.2vw, 12px);
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .guarantee__title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .guarantee__text {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════
+       OFERTA FINAL
+    ══════════════════════════════════════════ */
+    .offer {
+      background: var(--dark);
+      text-align: center;
+    }
+    .offer__title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .offer__title em { font-style: italic; color: var(--gold); }
+    .offer__sub {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: var(--gray);
+      margin-bottom: 40px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .offer__box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-xl);
+      padding: clamp(32px, 5vw, 56px);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .offer__includes {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .offer__includes h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .offer__include-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 14px;
+      color: var(--white);
+    }
+    .offer__include-item:last-child { border-bottom: none; }
+    .offer__include-item .check { color: var(--sage); font-size: 16px; }
+    .offer__include-item .price { margin-left: auto; color: var(--gray); font-size: 13px; }
+    .offer__divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.12);
+      margin: 20px 0;
+    }
+    .offer__price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .offer__price-total-label {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .offer__price-total-val {
+      font-size: 15px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .offer__price-kit-label {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .offer__price-kit-val {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .offer__cta-wrap {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .offer__cta-wrap .btn-cta { max-width: 100%; }
+    .offer__safe {
+      font-size: 12px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .offer__payment {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .payment-badge {
+      background: rgba(255,255,255,.08);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    /* ══════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════ */
+    .faq { background: var(--cream); }
+    .faq__list {
+      max-width: 720px;
+      margin: 40px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq__item {
+      background: var(--white);
+      border-radius: var(--r-md);
+      border: 1px solid var(--cream-dark);
+      overflow: hidden;
+    }
+    .faq__q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .faq__q-icon {
+      width: 24px; height: 24px;
+      background: var(--terra-pale);
+      color: var(--terra);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+    .faq__item.open .faq__q-icon { transform: rotate(45deg); }
+    .faq__a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .25s;
+      padding: 0 24px;
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+    .faq__item.open .faq__a {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer {
+      background: var(--dark);
+      padding: 32px 20px;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+    .footer a { color: var(--terra-mid); }
+
+    /* ══════════════════════════════════════════
+       DIVISOR DECORATIVO
+    ══════════════════════════════════════════ */
+    .divider-wave {
+      height: 48px;
+      background: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ══════════════════════════════════════════
+       ANIMAÇÕES
+    ══════════════════════════════════════════ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVO — MOBILE
+    ══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+      }
+      .hero__visual {
+        order: -1;
+        min-height: 280px;
+      }
+      .mockup-wrap { max-width: 320px; margin: 0 auto; }
+      .solution__inner {
+        grid-template-columns: 1fr;
+      }
+      .how__steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .how__steps::before { display: none; }
+      .authority__inner {
+        grid-template-columns: 1fr;
+      }
+      .authority__photo {
+        aspect-ratio: 1;
+        max-width: 240px;
+        margin: 0 auto;
+      }
+      .testimonials__grid {
+        grid-template-columns: 1fr;
+      }
+      .guarantee__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .guarantee__badge { margin: 0 auto; }
+      .products__total {
+        flex-direction: column;
+        text-align: center;
+      }
+      .product-card {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+      .product-card__price {
+        grid-column: 2;
+        text-align: left;
+      }
+      .sticky-bar__text { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__trust { flex-direction: column; gap: 10px; }
+      .offer__price-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       STICKY BAR
+  ═══════════════════════════════════════ -->
+  <div class="sticky-bar" id="stickyBar">
+    <span class="sticky-bar__text">Do Caos à Clareza — Kit Completo</span>
+    <span class="sticky-bar__price">R$ 67</span>
+    <button class="sticky-bar__cta" onclick="trackCheckout(); window.location.href='https://chk.eduzz.com/89AXJ4QG0D'">
+      Quero o Kit →
+    </button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span>✦</span> Psicologia aplicada ao dia a dia <span>✦</span>
+        </div>
+        <p class="hero__eyebrow">Kit completo de desenvolvimento pessoal</p>
+        <h1 class="hero__headline">
+          Do <em>Caos</em><br>à Clareza
+        </h1>
+        <p class="hero__sub">
+          5 ferramentas de psicologia clínica para identificar o que te trava, 
+          regular suas emoções, construir autoestima real e aprender a se proteger 
+          — com embasamento científico e em 5 a 10 minutos por dia.
+        </p>
+        <div class="hero__price-wrap">
+          <span class="hero__price-old">De R$ 135</span>
+          <span class="hero__price-new">R$ 67</span>
+        </div>
+        <p class="hero__price-note">Acesso imediato • 5 PDFs em alta resolução • Para imprimir ou usar digitalmente</p>
+        <button class="btn-cta" onclick="trackCheckout(); window.location.href='https://chk.eduzz.com/89AXJ4QG0D'">
+          <span class="btn-cta__icon">📦</span>
+          Quero o Kit Completo por R$ 67
+        </button>
+        <div class="hero__trust">
+          <span class="hero__trust-item"><span class="icon">✔</span> Download imediato</span>
+          <span class="hero__trust-item"><span class="icon">✔</span> 7 dias de garantia</span>
+          <span class="hero__trust-item"><span class="icon">✔</span> CRP 17/1518</span>
+          <span class="hero__trust-item"><span class="icon">✔</span> Base clínica TCC + ACT</span>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="mockup-wrap">
+          <div class="mockup-hover">
+            <div class="floating-image">
+              <img
+                src="mockup-kit.jpg"
+                alt="Do Caos à Clareza — Kit Completo de Psicologia Aplicada"
+              />
+            </div>
+          </div>
+          <div class="mockup-badge">
+            5 produtos<br>+100 páginas
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DOR / IDENTIFICAÇÃO
+  ═══════════════════════════════════════ -->
+  <section class="section pain">
+    <div class="container">
+      <p class="section-eyebrow">Você se identifica?</p>
+      <h2 class="section-title">Se <em>você sente isso</em>,<br>este kit foi feito para você.</h2>
+      <div class="pain__grid">
+        <div class="pain__card fade-in">
+          Já sei o que preciso mudar, mas na hora H ajo exatamente como sempre agi.
+        </div>
+        <div class="pain__card fade-in">
+          Vivo com uma voz interna que me critica antes mesmo de eu tentar.
+        </div>
+        <div class="pain__card fade-in">
+          A ansiedade paralisa mais do que mobiliza — e não sei como sair desse ciclo.
+        </div>
+        <div class="pain__card fade-in">
+          Digo sim quando quero dizer não, e fico ressentido(a) depois.
+        </div>
+        <div class="pain__card fade-in">
+          Minha autoestima depende da aprovação dos outros mais do que eu gostaria.
+        </div>
+        <div class="pain__card fade-in">
+          Estou num momento de virada e preciso de estrutura — não de mais teoria.
+        </div>
+      </div>
+      <div class="pain__cta">
+        <p>Isso não é falta de força de vontade. É o seu sistema emocional no automático.</p>
+        <small>E ele muda com prática estruturada — não com motivação passageira.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SOLUÇÃO
+  ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="solution__inner">
+        <div class="solution__text">
+          <p class="section-eyebrow">A solução</p>
+          <h2 class="section-title">Psicologia que <em>você aplica</em> no dia a dia.</h2>
+          <p>
+            Este kit foi desenvolvido por psicólogo com formação clínica e CRP ativo, 
+            com base em três das abordagens mais validadas pela ciência: 
+            neurociência comportamental.
+          </p>
+          <p>
+            Não é autoajuda superficial. É psicologia estruturada em ferramentas práticas, 
+            imprimíveis, que você usa em 5 a 10 minutos por dia — e que se conectam entre si 
+            como uma jornada progressiva.
+          </p>
+          <div class="solution__highlight">
+            <strong>Ideal para quem está em terapia:</strong> o kit aprofunda o processo 
+            entre as sessões, transformando insight em prática diária.
+          </div>
+        </div>
+        <div class="solution__cards">
+          <div class="method-card fade-in">
+            <div class="method-card__icon" style="background:var(--terra-pale)">🧠</div>
+            <div>
+              <div class="method-card__title">Base em TCC e ACT</div>
+              <div class="method-card__desc">Técnicas validadas cientificamente, não frases de motivação.</div>
+            </div>
+          </div>
+          <div class="method-card fade-in">
+            <div class="method-card__icon" style="background:var(--sage-pale)">⏱</div>
+            <div>
+              <div class="method-card__title">5 a 10 minutos por dia</div>
+              <div class="method-card__desc">Projetado para a rotina real — não para o ideal que nunca acontece.</div>
+            </div>
+          </div>
+          <div class="method-card fade-in">
+            <div class="method-card__icon" style="background:var(--rose-pale)">🔗</div>
+            <div>
+              <div class="method-card__title">Produtos que se conectam</div>
+              <div class="method-card__desc">Cada produto avança o anterior. Uma jornada com começo, meio e fim.</div>
+            </div>
+          </div>
+          <div class="method-card fade-in">
+            <div class="method-card__icon" style="background:var(--gold-pale)">🖨</div>
+            <div>
+              <div class="method-card__title">Imprimível ou digital</div>
+              <div class="method-card__desc">PDFs de alta resolução. Imprima, escreva à mão, ou use no tablet.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PRODUTOS
+  ═══════════════════════════════════════ -->
+  <section class="section products">
+    <div class="container">
+      <p class="section-eyebrow">O que está incluso</p>
+      <h2 class="section-title">5 produtos. <em>Uma jornada completa.</em></h2>
+      <p class="section-sub">Cada produto foi desenvolvido para avançar o anterior — e todos se referem entre si.</p>
+
+      <div class="products__grid">
+
+        <div class="product-card fade-in">
+          <div class="product-card__num" style="background:var(--terra)">1</div>
+          <div>
+            <div class="product-card__name">Diário de Autossabotagem</div>
+            <div class="product-card__desc">
+              21 dias de registros diários com perguntas guiadas para identificar gatilhos emocionais, 
+              padrões automáticos e o custo real desses comportamentos na sua vida. 
+              Inclui micro-intervenções clínicas e revisões semanais. 29 páginas.
+            </div>
+            <div class="product-card__tags">
+              <span class="tag">21 dias</span>
+              <span class="tag">TCC</span>
+              <span class="tag">ACT</span>
+              <span class="tag">29 páginas</span>
+            </div>
+          </div>
+          <div class="product-card__price">
+            <div class="product-card__price-label">valor</div>
+            <div class="product-card__price-val">R$ 37</div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="product-card__num" style="background:var(--rose)">2</div>
+          <div>
+            <div class="product-card__name">Cartas de Autocompaixão</div>
+            <div class="product-card__desc">
+              40 cartas imprimíveis em 4 categorias: Autocompaixão, Acolhimento, Ressignificação e 
+              Ação Gentil. Uma carta por dia, para treinar um olhar gentil sobre si mesmo(a). 
+              Inclui página de verso para impressão frente e verso.
+            </div>
+            <div class="product-card__tags">
+              <span class="tag">40 cartas</span>
+              <span class="tag">Imprimível</span>
+              <span class="tag">Baralho</span>
+            </div>
+          </div>
+          <div class="product-card__price">
+            <div class="product-card__price-label">valor</div>
+            <div class="product-card__price-val">R$ 27</div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="product-card__num" style="background:var(--sage)">3</div>
+          <div>
+            <div class="product-card__name">Planner de Ansiedade</div>
+            <div class="product-card__desc">
+              8 semanas de planejamento estruturado: tracker diário de nível de ansiedade, 
+              técnicas de regulação do sistema nervoso, revisões semanais e gráfico de evolução. 
+              Cada semana tem um tema clínico progressivo. 29 páginas.
+            </div>
+            <div class="product-card__tags">
+              <span class="tag">8 semanas</span>
+              <span class="tag">Tracker diário</span>
+              <span class="tag">Neurociência</span>
+            </div>
+          </div>
+          <div class="product-card__price">
+            <div class="product-card__price-label">valor</div>
+            <div class="product-card__price-val">R$ 27</div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="product-card__num" style="background:var(--gold)" style="color:var(--dark)">4</div>
+          <div>
+            <div class="product-card__name">Diário de Autoestima</div>
+            <div class="product-card__desc">
+              21 dias em 3 fases progressivas: mapear a narrativa atual, coletar evidências reais 
+              de capacidade e reescrever a história que você conta sobre si mesmo(a). 
+              A autoestima que não depende de aprovação. 29 páginas.
+            </div>
+            <div class="product-card__tags">
+              <span class="tag">21 dias</span>
+              <span class="tag">3 fases</span>
+              <span class="tag">Narrativa interna</span>
+            </div>
+          </div>
+          <div class="product-card__price">
+            <div class="product-card__price-label">valor</div>
+            <div class="product-card__price-val">R$ 27</div>
+          </div>
+        </div>
+
+        <div class="product-card fade-in">
+          <div class="product-card__num" style="background:var(--slate)">5</div>
+          <div>
+            <div class="product-card__name">Guia de Limites Saudáveis</div>
+            <div class="product-card__desc">
+              Workbook prático com mapa das 5 áreas de vida, scripts de comunicação assertiva, 
+              protocolo de 4 passos para lidar com a culpa e plano de ação integrado. 
+              Porque autoconhecimento sem proteção não se sustenta. 14 páginas.
+            </div>
+            <div class="product-card__tags">
+              <span class="tag">Workbook</span>
+              <span class="tag">Scripts prontos</span>
+              <span class="tag">14 páginas</span>
+            </div>
+          </div>
+          <div class="product-card__price">
+            <div class="product-card__price-label">valor</div>
+            <div class="product-card__price-val">R$ 17</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="products__total fade-in">
+        <div class="products__total-text">
+          <h3>Kit completo "Do Caos à Clareza"</h3>
+          <p>107 páginas • 5 produtos • acesso imediato após a compra</p>
+        </div>
+        <div class="products__total-price">
+          <div class="products__total-old">de R$ 135</div>
+          <div class="products__total-new">R$ 67</div>
+        </div>
+        <div class="products__total-cta">
+          <button class="btn-cta" onclick="trackCheckout(); window.location.href='https://chk.eduzz.com/89AXJ4QG0D'">
+            Quero o Kit por R$ 67 →
+          </button>
+          <span class="products__total-safe">🔒 Compra segura • Acesso imediato</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       COMO FUNCIONA
+  ═══════════════════════════════════════ -->
+  <section class="section how">
+    <div class="container" style="text-align:center">
+      <p class="section-eyebrow">Como funciona</p>
+      <h2 class="section-title">Três passos <em>simples</em>.</h2>
+      <div class="how__steps">
+        <div class="how__step fade-in">
+          <div class="how__step-num">1</div>
+          <h3>Compre e acesse</h3>
+          <p>Após a confirmação do pagamento na Eduzz, você recebe o link para download imediato dos 5 arquivos PDF.</p>
+        </div>
+        <div class="how__step fade-in">
+          <div class="how__step-num">2</div>
+          <h3>Imprima ou use digital</h3>
+          <p>Imprima em casa ou num copiador, e comece. Ou use direto no tablet com um app de anotação. Você escolhe.</p>
+        </div>
+        <div class="how__step fade-in">
+          <div class="how__step-num">3</div>
+          <h3>Pratique 5 a 10 min/dia</h3>
+          <p>Siga a sequência dos produtos. Cada um prepara você para o próximo. A jornada tem começo, meio e fim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       AUTORIDADE
+  ═══════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="authority__inner">
+        <div class="authority__photo-wrap fade-in">
+          <div class="authority__photo">
+            <img src="foto-clovis.jpg" 
+                 alt="Dr. Clóvis Neto — Psicólogo CRP 17/1518"
+                 style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:var(--r-lg);" />
+          </div>
+          <div class="authority__crp">CRP 17/1518</div>
+        </div>
+        <div class="authority__text fade-in">
+          <p class="section-eyebrow">Quem criou este kit</p>
+          <h2 class="authority__name">Clóvis Neto</h2>
+          <p class="authority__role">Psicólogo Clínico • Especialista em Desenvolvimento Pessoal</p>
+          <p>
+            Com CRP ativo e formação em psicologia clínica, desenvolvi este kit a partir 
+            de uma observação consistente na prática: as pessoas <em>entendem</em> o que 
+            precisam mudar, mas não têm estrutura para <em>aplicar</em> esse entendimento 
+            no dia a dia.
+          </p>
+          <p>
+            Cada produto foi construído com base em neurociência comportamental — não como 
+            conteúdo educativo, mas como ferramentas de uso real, desenhadas para a 
+            rotina de quem tem 5 minutos, não 5 horas.
+          </p>
+          <p>
+            O kit não substitui a psicoterapia. Mas se você está em terapia, vai aprofundar 
+            o processo. E se ainda não está, pode ser o ponto de partida.
+          </p>
+          <div class="authority__badges">
+            <span class="authority__badge">CRP 17/1518 ativo</span>
+            <span class="authority__badge">Psicologia Clínica</span>
+            <span class="authority__badge">TCC + ACT</span>
+            <span class="authority__badge">Desenvolvimento Pessoal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DEPOIMENTOS
+  ═══════════════════════════════════════ -->
+  <section class="section testimonials">
+    <div class="container" style="text-align:center">
+      <p class="section-eyebrow">Depoimentos</p>
+      <h2 class="section-title">O que dizem <em>quem usou</em>.</h2>
+      <div class="testimonials__grid">
+
+        <div class="testimonial fade-in">
+          <div class="testimonial__stars">★★★★★</div>
+          <div class="testimonial__text">
+            "Super recomendo, um ótimo profissional com grande sabedoria. Em poucas sessões 
+            já tive melhoras significativas no qual tem me ajudado muito no meu processo de 
+            autoconhecimento. Uma pessoa que te acolhe, transmite paz e leveza, te deixa super 
+            confortável e à vontade, e isso faz toda diferença. Muito obrigado!"
+          </div>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:var(--rose-light);font-size:22px">🌸</div>
+            <div>
+              <div class="testimonial__name">Thaiz</div>
+              <div class="testimonial__meta">Secretária Executiva • Portugal</div>
+              <div class="testimonial__meta" style="color:var(--gold);font-size:11px;">✔ Paciente verificada — 10 Jul 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial fade-in">
+          <div class="testimonial__stars">★★★★★</div>
+          <div class="testimonial__text">
+            "O Clóvis é um profissional excepcional. Estou muito satisfeito com o acompanhamento 
+            que venho fazendo com ele. Muito acolhedor, e utiliza uma abordagem ampla, com 
+            ótimas técnicas voltadas para melhorar o nosso entendimento sobre os próprios 
+            pensamentos, emoções e comportamentos."
+          </div>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:var(--sage-light);font-size:22px">💻</div>
+            <div>
+              <div class="testimonial__name">Naiac</div>
+              <div class="testimonial__meta">Analista de Sistemas • Brasília/DF</div>
+              <div class="testimonial__meta" style="color:var(--gold);font-size:11px;">✔ Paciente verificado — 27 Jul 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial fade-in">
+          <div class="testimonial__stars">★★★★★</div>
+          <div class="testimonial__text">
+            "Dr. Clóvis há meses me auxilia a lidar com minhas aflições, ajudando-me a buscar 
+            o equilíbrio e a leveza necessária para lidar com minhas angústias. Aprendi a 
+            trabalhar melhor com as coisas e devo muito disso ao Dr. Clóvis que, por meio dos 
+            seus apontamentos, ajuda-me a buscar a leveza que sempre quis para minha vida. 
+            Super indico, com toda certeza que não haverá arrependimentos."
+          </div>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style="background:var(--slate-pale);font-size:22px">⚖️</div>
+            <div>
+              <div class="testimonial__name">Michael</div>
+              <div class="testimonial__meta">Advogado • São Paulo/SP</div>
+              <div class="testimonial__meta" style="color:var(--gold);font-size:11px;">✔ Paciente verificado — 13 Jun 2025</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       GARANTIA
+  ═══════════════════════════════════════ -->
+  <section class="section guarantee">
+    <div class="container">
+      <div class="guarantee__inner fade-in">
+        <div class="guarantee__badge">
+          <div class="guarantee__badge-days">7</div>
+          <div class="guarantee__badge-label">dias de<br>garantia</div>
+        </div>
+        <div>
+          <h3 class="guarantee__title">Risco zero. Experimente sem medo.</h3>
+          <p class="guarantee__text">
+            Se por qualquer motivo você não ficar satisfeito(a) com o kit nos primeiros 
+            <strong>7 dias após a compra</strong>, basta entrar em contato e devolvemos 
+            100% do seu dinheiro — sem perguntas, sem burocracia. Essa é a garantia da 
+            plataforma Eduzz. Você não tem nada a perder e uma jornada inteira a ganhar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       OFERTA FINAL
+  ═══════════════════════════════════════ -->
+  <section class="section offer">
+    <div class="container">
+      <h2 class="offer__title">Pronto para sair do<br><em>piloto automático?</em></h2>
+      <p class="offer__sub">
+        Tudo que você precisa para começar está aqui. Uma decisão, acesso imediato.
+      </p>
+
+      <div class="offer__box fade-in">
+        <div class="offer__includes">
+          <h4>Você leva tudo isso:</h4>
+          <div class="offer__include-item">
+            <span class="check">✔</span>
+            <span>Diário de Autossabotagem — 21 dias</span>
+            <span class="price">R$ 37</span>
+          </div>
+          <div class="offer__include-item">
+            <span class="check">✔</span>
+            <span>Cartas de Autocompaixão — 40 cartas</span>
+            <span class="price">R$ 27</span>
+          </div>
+          <div class="offer__include-item">
+            <span class="check">✔</span>
+            <span>Planner de Ansiedade — 8 semanas</span>
+            <span class="price">R$ 27</span>
+          </div>
+          <div class="offer__include-item">
+            <span class="check">✔</span>
+            <span>Diário de Autoestima — 21 dias</span>
+            <span class="price">R$ 27</span>
+          </div>
+          <div class="offer__include-item">
+            <span class="check">✔</span>
+            <span>Guia de Limites Saudáveis</span>
+            <span class="price">R$ 17</span>
+          </div>
+          <hr class="offer__divider" />
+          <div class="offer__price-row">
+            <span class="offer__price-total-label">Valor total separado</span>
+            <span class="offer__price-total-val">R$ 135</span>
+          </div>
+          <div class="offer__price-row">
+            <span class="offer__price-kit-label">Kit completo</span>
+            <span class="offer__price-kit-val">R$ 67</span>
+          </div>
+        </div>
+
+        <div class="offer__cta-wrap">
+          <button class="btn-cta" onclick="trackCheckout(); window.location.href='https://chk.eduzz.com/89AXJ4QG0D'">
+            📦 Quero o Kit Completo por R$ 67
+          </button>
+          <span class="offer__safe">🔒 Pagamento seguro via Eduzz • Acesso imediato</span>
+          <div class="offer__payment">
+            <span class="payment-badge">Cartão de crédito</span>
+            <span class="payment-badge">PIX</span>
+            <span class="payment-badge">Boleto</span>
+            <span class="payment-badge">7 dias de garantia</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════ -->
+  <section class="section faq">
+    <div class="container" style="text-align:center">
+      <p class="section-eyebrow">Dúvidas frequentes</p>
+      <h2 class="section-title">Perguntas <em>e respostas</em>.</h2>
+      <div class="faq__list">
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Como recebo os arquivos após a compra?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Imediatamente após a confirmação do pagamento, a plataforma Eduzz envia um 
+            e-mail com o link para download dos 5 arquivos PDF. O acesso é vitalício — 
+            você pode baixar quantas vezes quiser.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Precisa imprimir ou posso usar no celular/tablet?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Você pode usar das duas formas. Os PDFs foram criados para impressão em A4 
+            e ficam ótimos impressos. Mas também funcionam muito bem em tablets com apps 
+            de anotação como GoodNotes, Notability ou até o próprio Adobe Acrobat.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Este kit substitui a psicoterapia?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Não — e isso está claramente indicado em cada produto. O kit é um complemento 
+            poderoso para quem está em terapia e quer aprofundar o processo entre as sessões. 
+            Para quem ainda não faz terapia, pode ser um excelente ponto de partida para o 
+            autoconhecimento — e um dos produtos orienta exatamente quando buscar apoio profissional.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Por que este kit é diferente de outros materiais de autoajuda?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Porque foi criado por psicólogo com CRP ativo e tem embasamento em abordagens 
+            clínicas validadas cientificamente (TCC e ACT). Não é uma coleção de frases 
+            motivacionais — é uma jornada estruturada com intervenções práticas que você 
+            aplica no seu dia a dia, com progressão lógica entre os produtos.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            Posso comprar apenas um produto do kit?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Sim, cada produto pode ser adquirido separadamente. Porém, o kit completo 
+            oferece uma jornada progressiva onde cada produto prepara o terreno para o 
+            próximo — e o valor total separado seria de R$ 135 contra R$ 67 no kit.
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" onclick="toggleFaq(this)">
+            E se eu não gostar? Tem garantia?
+            <span class="faq__q-icon">+</span>
+          </button>
+          <div class="faq__a">
+            Sim. Você tem 7 dias de garantia total, processada pela plataforma Eduzz. 
+            Se por qualquer razão o kit não atender às suas expectativas, basta solicitar 
+            o reembolso no prazo e devolvemos 100% do valor pago — sem questionamentos.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <p>
+      © 2025 Clóvis Neto — Psicólogo CRP 17/1518<br>
+      Todos os direitos reservados.<br>
+      Este material tem fins educativos e não substitui o acompanhamento psicológico individual.<br>
+      <small style="font-size:11px;opacity:.5">
+        Checkout processado com segurança pela plataforma Eduzz.
+      </small>
+    </p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       JS — FAQ + Scroll + Sticky
+  ═══════════════════════════════════════ -->
+  <script>
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq__item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq__item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Sticky bar
+    const stickyBar = document.getElementById('stickyBar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) stickyBar.classList.add('visible');
+      else stickyBar.classList.remove('visible');
+    }, { passive: true });
+
+    // Fade-in observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
